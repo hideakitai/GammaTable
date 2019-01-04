@@ -1,14 +1,12 @@
-# GammaTable
-Gamma Table for Arduino
+#include <GammaTable.h>
 
-## Usage
-
-``` C++
-#include <Gamma.h>
 GammaTable<byte, 256> gamma_tbl(2.8);
 
 void setup()
 {
+    Serial.begin(115200);
+    delay(2000);
+
     for(size_t i = 0; i < gamma_tbl.size(); ++i)
     {
         Serial.print(i);
@@ -16,8 +14,7 @@ void setup()
         Serial.println(gamma_tbl[i]);
     }
 }
-```
 
-## License
-
-MIT
+void loop()
+{
+}
