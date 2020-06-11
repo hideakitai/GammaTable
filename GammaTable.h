@@ -2,7 +2,7 @@
 #ifndef EMBEDDEDUTILS_GAMMA_H
 #define EMBEDDEDUTILS_GAMMA_H
 
-#ifdef __AVR__
+#if defined(__AVR__) || defined(ARDUINO_spresense_ast)
 #include "RingBuffer.h"
 #else
 #include <cmath>
@@ -12,7 +12,7 @@
 template <typename TYPE, size_t SIZE>
 class GammaTable
 {
-#ifdef __AVR__
+#if defined(__AVR__) || defined(ARDUINO_spresense_ast)
     using ArrayType = RingBuffer<TYPE, SIZE>;
 #else
     using ArrayType = std::array<TYPE, SIZE>;
@@ -42,7 +42,7 @@ private:
     {
         for (size_t i = 0; i < SIZE; ++i)
         {
-#ifdef __AVR__
+#if defined(__AVR__) || defined(ARDUINO_spresense_ast)
             gamma_array.push(static_cast<TYPE>(pow(static_cast<float>(i) / static_cast<float>(SIZE), gamma_) * scale_));
 #else
             gamma_array[i] = static_cast<TYPE>(pow(static_cast<float>(i) / static_cast<float>(SIZE), gamma_) * scale_);
