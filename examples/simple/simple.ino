@@ -10,7 +10,7 @@ void setup()
     for(size_t i = 0; i < gamma_tbl.size(); ++i)
     {
         Serial.print(i);
-        Serial.print(" : ");
+        Serial.print(" ");
         Serial.println(gamma_tbl[i]);
     }
 }
